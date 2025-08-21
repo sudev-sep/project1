@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+   
+        
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+     
+        
+    </style>
+    
+    {% load static %}
+</head>
+
+
+<body>
+    <h1>Welcome, Administrator</h1>
+
+    <p>Admin Dashboard</p>
+
+            <td><a href="{% url 'student_admin' %}">student_view</a></td><br><br>
+            <td><a href="{% url 'teacher_admin' %}">teacher_view</a></td><br><br>
+            <td><a href="{% url 't_register' %}">Add Teacher</a></td><br><br>
+
+    <td><a href="{% url 'home' %}">home</a></td><br><br>
+    <td><a href="{% url 'logout' %}">Logout</a></td><br><br>
+
+</body>
+</html>
+
+

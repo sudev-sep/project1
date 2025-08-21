@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher home page</title>
+
+
+<style>
+    h1,body {
+        text-align: center;
+        color: rgb(16, 8, 8);
+    }
+
+         table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            width: 50%; 
+            font-size: 18px; 
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+</style>
+
+
+
+</head>
+
+<body>
+
+    <h1>Student details</h1>
+    <table border="2" align="center">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Guardian</th>
+            <th>Username</th>
+          
+        </tr>
+        {% for s in students %}
+        <tr>
+            <td>{{ s.student_id.first_name }}</td>
+            <td>{{ s.student_id.last_name }}</td>
+            <td>{{ s.student_id.email }}</td>
+            <td>{{ s.student_id.address }}</td>
+            <td>{{ s.student_id.phone_number }}</td>
+            <td>{{ s.guardian }}</td>
+            <td>{{ s.student_id.username }}</td>
+           
+        </tr>
+        {% endfor %}
+    </table>
+
+  <a href="{% url 'logout' %}">Logout</a><br>
+</body>
+</html>

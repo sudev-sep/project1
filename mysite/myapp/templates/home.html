@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USER login</title>
+    <style>
+        h1 {
+            color: white; 
+            text-align: center;
+            padding: 10px;
+        }
+
+        body {
+            text-align: center;
+            color: rgb(149, 137, 137);
+            background-color: rgb(13, 8, 8);
+            font-family: Arial, sans-serif;
+        }
+
+        a {
+            color: yellow;
+            display: block;
+            margin: 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>WELCOME TO STUDENT MANAGEMENT SYSTEM</h1><br><br>
+    <a href="{% url 'login' %}">Login</a><br>
+    <a href="{% url 's_register' %}">Student Register</a><br>
+</body>
+</html>

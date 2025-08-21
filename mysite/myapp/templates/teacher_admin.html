@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teacher_view</title>
+
+    
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+   
+        
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+     
+        
+    </style>
+
+
+</head>
+<body>
+    <h2>Teacher View</h2>
+    <table border="2" align="center">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Salary</th>
+            <th>Experience</th>
+            <th>Username</th>
+            <th>Delete</th>
+            <th>Edit</th>
+         
+        </tr>
+        {% for t in teachers %}
+        <tr>
+            <td>{{ t.teacher_id.first_name }}</td>
+            <td>{{ t.teacher_id.last_name }}</td>
+            <td>{{ t.teacher_id.email }}</td>
+            <td>{{ t.teacher_id.address }}</td>
+            <td>{{ t.teacher_id.phone_number }}</td>
+            <td>{{ t.salary }}</td>
+            <td>{{ t.experience }}</td>
+            <td>{{ t.teacher_id.username }}</td>
+            <td><a href="{% url 'delete_t' t.id %}">delete</a></td>
+            <td><a href="{% url 'teacher_edit' t.id %}">edit</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'admin_h' %}">back</a><br>
+
+</body>
+</html>

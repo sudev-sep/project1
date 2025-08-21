@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Homepage</title>
+
+
+<style>
+    h1,body {
+        text-align: center;
+        color: rgb(16, 8, 8);
+    }
+
+         table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            width: 50%; 
+            font-size: 18px; 
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+</style>
+
+</head>
+
+<body>
+
+    <h1>Welcome to Student Home Page</h1>
+    <p>This is the student home page where you can view your details and manage your account.</p>
+
+    <a href="{% url 'logout' %}">Logout</a><br>
+
+    <h2>Your Details</h2>
+    <table border="2" align="center">
+        <tr>
+            <th>First Name</th>
+            <td>{{ student.student_id.first_name }}</td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td>{{ student.student_id.last_name }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ student.student_id.email }}</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>{{ student.student_id.address }}</td>
+        </tr>
+        <tr>
+            <th>Phone Number</th>
+            <td>{{ student.student_id.phone_number }}</td>
+        </tr>
+        <tr>
+            <th>Guardian</th>
+            <td>{{ student.guardian }}</td>
+        </tr>
+        <tr>
+            <th>Username</th>
+            <td>{{ student.student_id.username }}</td>
+        </tr>
+      
+    </table>   
+    <a href="{% url 'home' %}">back</a><br>
+
+
+</body>
+</html>

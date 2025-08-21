@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student_view</title>
+
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+   
+        
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+     
+        
+    </style>
+
+
+
+</head>
+
+
+<body>
+    
+    <h2>Student View</h2>
+    <table border="2" align="center">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Guardian</th>
+            <th>Username</th>
+            <th>delete</th>
+            <th>approve</th>
+            <th>edit</th>
+        </tr>
+        {% for s in students %}
+        <tr>
+            <td>{{ s.student_id.first_name }}</td>
+            <td>{{ s.student_id.last_name }}</td>
+            <td>{{ s.student_id.email }}</td>
+            <td>{{ s.student_id.address }}</td>
+            <td>{{ s.student_id.phone_number }}</td>
+            <td>{{ s.guardian }}</td>
+            <td>{{ s.student_id.username }}</td>
+            <td><a href="{% url 'delete_s' s.id %}">DELETE</a></td>
+            <td><a href="{% url 'approve_s' s.id %}">APPROVE</a></td>
+            <td><a href="{% url 'student_edit' s.id%}">edit</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'admin_h' %}">back</a><br>
+    
+</body>
+</html>
