@@ -1,1 +1,1 @@
-# Zues Django Project
+# student management system using django
