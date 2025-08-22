@@ -111,10 +111,14 @@ def student_h(request):
 
 
 def teacher_h(request):
+    teacher = get_object_or_404(Teacher, teacher_id=request.user)
     if not request.user.is_staff:  
         return HttpResponseForbidden("Access denied. Teachers only.")
     students = Student.objects.all()
-    return render(request,'teacher_h.html',{'students': students})
+    return render(request, 'teacher_h.html', {
+        'students': students,
+        'teacher': teacher
+    })
 
 def admin_h(request):
     return render(request, 'admin_h.html')
@@ -180,6 +184,29 @@ def student_edit(request, id):
     return render(request, "student_edit.html", {"student": student})
 
 
+def student_edit_h(request, id):
+    student = get_object_or_404(Student, id=id)
+
+    if request.user != student.student_id and not request.user.is_superuser:
+        return HttpResponse("Access denied.")
+
+    if request.method == "POST":
+        student.student_id.first_name = request.POST.get("FIRSTNAME")
+        student.student_id.last_name = request.POST.get("LASTNAME")
+        student.student_id.email = request.POST.get("EMAIL")
+        student.student_id.username = request.POST.get("USERNAME")
+        student.student_id.save()
+
+        student.address = request.POST.get("ADDRESS")
+        student.phone_number = request.POST.get("PHONE_NUMBER")
+        student.guardian = request.POST.get("GUARDIAN")
+        student.save()
+        return redirect("student_h")  
+
+    return render(request, "student_edit.html", {"student": student})
+
+
+
 
 
 def edit_teacher(request, id):
@@ -206,6 +233,28 @@ def edit_teacher(request, id):
     return render(request, "teacher_edit.html", {"teacher": teacher})
 
 
+def edit_teacher_h(request, id):
+    teacher = Teacher.objects.filter(id=id).first()
+    user = teacher.teacher_id  
+
+    if not teacher:
+        return redirect("teacher_h")   
+    if request.method == "POST":
+        user.first_name = request.POST["FIRSTNAME"]
+        user.last_name = request.POST["LASTNAME"]
+        user.email = request.POST["EMAIL"]
+        user.address = request.POST["ADDRESS"]
+        user.phone_number = request.POST["PHONE_NUMBER"]
+
+        teacher.salary = request.POST["SALARY"]
+        teacher.experience = request.POST["EXPERIENCE"]
+
+        user.save()
+        teacher.save()
+
+        return redirect("teacher_h")   
+
+    return render(request, "teacher_edit.html", {"teacher": teacher})
 
 
 

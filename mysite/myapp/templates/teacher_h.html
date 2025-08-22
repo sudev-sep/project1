@@ -28,7 +28,18 @@
 
 <body>
 
-    <h1>Student details</h1>
+<h2>Teacher View</h2>
+<table border="1" align="center">
+    <tr><th>Email</th><td>{{ teacher.teacher_id.email }}</td></tr>
+    <tr><th>Address</th><td>{{ teacher.teacher_id.address }}</td></tr>
+    <tr><th>Phone</th><td>{{ teacher.teacher_id.phone_number }}</td></tr>
+    <tr><th>Salary</th><td>{{ teacher.salary }}</td></tr>
+    <tr><th>Experience</th><td>{{ teacher.experience }}</td></tr>
+</table>
+      <a href="{% url 'edit_teacher_h' teacher.id %}">Edit teacher</a>
+
+
+    <h1>Students</h1>
     <table border="2" align="center">
         <tr>
             <th>First Name</th>
@@ -53,7 +64,6 @@
         </tr>
         {% endfor %}
     </table>
-
   <a href="{% url 'logout' %}">Logout</a><br>
 </body>
 </html>

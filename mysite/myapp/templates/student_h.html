@@ -61,8 +61,8 @@
             <th>Username</th>
             <td>{{ student.student_id.username }}</td>
         </tr>
-      
     </table>   
+    <a href="{% url 'student_edit_h' student.id %}">Edit Student</a>
     <a href="{% url 'home' %}">back</a><br>
 
 
